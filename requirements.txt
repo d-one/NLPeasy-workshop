@@ -4,3 +4,4 @@ nlpeasy
 scikit-learn
 matplotlib
 seaborn
+jupyter-server-proxy
