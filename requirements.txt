@@ -1,2 +1,6 @@
 nlpeasy
 spacy
+nlpeasy
+scikit-learn
+matplotlib
+seaborn
