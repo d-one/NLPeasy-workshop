@@ -1,2 +1,6 @@
 nlpeasy
 spacy
+scikit-learn
+matplotlib
+seaborn
+jupyter-server-proxy

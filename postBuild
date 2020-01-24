@@ -1,3 +1,14 @@
 #!/bin/bash
 
 python -m spacy download en_core_web_md
+
+ELK_VERSION=7.5.2
+
+mkdir opt
+cd opt
+
+curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
+curl https://artifacts.elastic.co/downloads/kibana/kibana-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
+
+ln -s elasticsearch-$ELK_VERSION elasticsearch
+ln -s kibana-$ELK_VERSION-linux-x86_64 kibana

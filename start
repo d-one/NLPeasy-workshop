@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo -Xms600m >> opt/elasticsearch/config/jvm.options
+echo -Xmx600m >> opt/elasticsearch/config/jvm.options
+
+opt/elasticsearch/bin/elasticsearch &
+
+echo server.basePath: "$JUPYTERHUB_SERVICE_PREFIX"proxy/5601 >> opt/kibana/config/kibana.yml
+opt/kibana/bin/kibana &
+
+exec "$@"
