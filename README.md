@@ -13,6 +13,8 @@ Online version so now installation needed on your laptop - might even work on a 
 
 > <https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab)
 
+> With prepared-data: <https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/elastic?urlpath=lab> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/elastic?urlpath=lab)
+
 However, there is only 1-2 GB of RAM available, which is tough for our example. Also if you loose your connection or close your laptop for 10 minutes your session is lost.
 
 ## Own Laptop
