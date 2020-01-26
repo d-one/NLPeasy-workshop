@@ -3,4 +3,5 @@ spacy
 scikit-learn
 matplotlib
 seaborn
+jupyterlab
 jupyter-server-proxy

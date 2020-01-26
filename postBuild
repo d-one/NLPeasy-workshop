@@ -1,6 +1,9 @@
 #!/bin/bash
 
+python -m spacy download en_core_web_sm
 python -m spacy download en_core_web_md
+
+curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.1/elastic-data.zip
 
 ELK_VERSION=7.5.2
 
@@ -12,3 +15,4 @@ curl https://artifacts.elastic.co/downloads/kibana/kibana-oss-$ELK_VERSION-linux
 
 ln -s elasticsearch-$ELK_VERSION elasticsearch
 ln -s kibana-$ELK_VERSION-linux-x86_64 kibana
+
