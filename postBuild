@@ -16,3 +16,11 @@ curl https://artifacts.elastic.co/downloads/kibana/kibana-oss-$ELK_VERSION-linux
 ln -s elasticsearch-$ELK_VERSION elasticsearch
 ln -s kibana-$ELK_VERSION-linux-x86_64 kibana
 
+<<<<<<< HEAD
+=======
+cd elasticsearch
+rm -fr data
+unzip ../../elastic-data.zip
+mv elastic-data/elastic-data ./data
+
+>>>>>>> elastic
