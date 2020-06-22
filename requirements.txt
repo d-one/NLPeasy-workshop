@@ -1,7 +1,13 @@
-nlpeasy
+# nlpeasy
 spacy
 scikit-learn
 matplotlib
 seaborn
-jupyterlab
+jupyterlab>=2.1.4
 jupyter-server-proxy
+nodejs
+pandas
+spacy
+elasticsearch
+requests
+beautifulsoup4

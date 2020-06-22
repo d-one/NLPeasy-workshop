@@ -1,26 +1,42 @@
 #!/bin/bash
+set -x
 
-python -m spacy download en_core_web_sm
-python -m spacy download en_core_web_md
+export ELK_VERSION=${ELK_VERSION:-7.7.1}
+export SHARE_DIR=${SHARE_DIR:-~/opt}
 
-curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.1/elastic-data.zip
+mkdir -p $SHARE_DIR
+cd $SHARE_DIR
 
-ELK_VERSION=7.5.2
-
-mkdir opt
-cd opt
-
-curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
-curl https://artifacts.elastic.co/downloads/kibana/kibana-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
+if [ ! -d $SHARE_DIR/elasticsearch-$ELK_VERSION ]; then
+    curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
+fi
+if [ ! -d $SHARE_DIR/kibana-$ELK_VERSION-linux-x86_64 ]; then
+    curl https://artifacts.elastic.co/downloads/kibana/kibana-oss-$ELK_VERSION-linux-x86_64.tar.gz | tar xz
+fi
 
 ln -s elasticsearch-$ELK_VERSION elasticsearch
 ln -s kibana-$ELK_VERSION-linux-x86_64 kibana
 
-<<<<<<< HEAD
-=======
-cd elasticsearch
-rm -fr data
-unzip ../../elastic-data.zip
-mv elastic-data/elastic-data ./data
+mkdir -p /var/lib/elasticsearch
+if [ ! -d $SHARE_DIR/elastic-data/elastic-data ]; then
+    curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.1/elastic-data.zip && unzip elastic-data.zip
+fi
 
->>>>>>> elastic
+
+cd
+
+# mkdir bin
+# ln -s $SHARE_DIR/elasticsearch/bin/elasticsearch bin/
+# ln -s $SHARE_DIR/kibana/bin/kibana bin/
+
+python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_md
+
+pip install ./jupyter-server-proxy-1.5.1.tar.gz
+pip install nlpeasy
+
+if [ ! -r "profiles.csv.zip" ]; then
+    curl -LO https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip
+fi
+
+jupyter labextension install -y --log-level=INFO --minimize=False @jupyterlab/server-proxy

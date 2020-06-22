@@ -1,11 +1,14 @@
 #!/bin/bash
 
-echo -Xms600m >> opt/elasticsearch/config/jvm.options
-echo -Xmx600m >> opt/elasticsearch/config/jvm.options
+export SHARE_DIR=${SHARE_DIR:-~/opt}
 
-opt/elasticsearch/bin/elasticsearch -d
+echo -Xms600m >> $SHARE_DIR/elasticsearch/config/jvm.options
+echo -Xmx600m >> $SHARE_DIR/elasticsearch/config/jvm.options
 
-echo server.basePath: "${JUPYTERHUB_SERVICE_PREFIX:-/}"proxy/5601 >> opt/kibana/config/kibana.yml
-opt/kibana/bin/kibana &
+# bin/elasticsearch -d
+$SHARE_DIR/elasticsearch/bin/elasticsearch -d -p $SHARE_DIR/pid.elastic #-E index.number_of_replicas=0
+
+echo server.basePath: "${JUPYTERHUB_SERVICE_PREFIX:-/}"kibana >> $SHARE_DIR/kibana/config/kibana.yml
+$SHARE_DIR/kibana/bin/kibana  --cpu.cgroup.path.override=/ --cpuacct.cgroup.path.override=/ &
 
 exec "$@"

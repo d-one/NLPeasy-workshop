@@ -5,10 +5,10 @@ BINDER = 'BINDER_PORT' in os.environ
 
 def kibana_on_binder():
     prefix = os.environ['JUPYTERHUB_SERVICE_PREFIX']
-    url = f"https:////hub.gke.mybinder.org/{prefix}/proxy/5601".replace('//','/')
+    url = f"https:////hub.gke.mybinder.org/{prefix}/kibana".replace('//','/')
     print(url)
     return(url)
 
 def display_kibana_link():
-    script = 'element.innerHTML = \'Kibana on <a href="proxy/5601" target="_blank">proxy/5601</a>\';'
+    script = 'element.innerHTML = \'Kibana on <a href="kibana" target="_blank">./kibana</a>\';'
     display(Javascript(script))
