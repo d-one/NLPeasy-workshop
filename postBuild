@@ -17,13 +17,16 @@ fi
 ln -s elasticsearch-$ELK_VERSION elasticsearch
 ln -s kibana-$ELK_VERSION-linux-x86_64 kibana
 
-mkdir -p /var/lib/elasticsearch
 if [ ! -d $SHARE_DIR/elastic-data/elastic-data ]; then
-    curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.1/elastic-data.zip && unzip elastic-data.zip
+    curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.2/elastic-data.tar.gz && tar xzvf elastic-data.tar.gz
 fi
 
-
 cd
+
+if [ ! -f okc_enriched_demo.pickle ]; then
+    curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.2/okc_enriched_demo.pickle.tar.gz && tar xzvf okc_enriched_demo.pickle.tar.gz
+fi
+
 
 # mkdir bin
 # ln -s $SHARE_DIR/elasticsearch/bin/elasticsearch bin/
@@ -31,6 +34,7 @@ cd
 
 python -m spacy download en_core_web_sm
 python -m spacy download en_core_web_md
+python -m spacy download de_core_news_md
 
 pip install ./jupyter-server-proxy-1.5.1.tar.gz
 # pip install nlpeasy
