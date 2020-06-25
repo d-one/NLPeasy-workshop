@@ -11,4 +11,3 @@ spacy
 elasticsearch
 requests
 beautifulsoup4
-git+https://github.com/d-one/nlpeasy
