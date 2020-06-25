@@ -9,7 +9,11 @@ For the workshop you have 2 possibilities to participate.
 
 ## Mybinder.org
 
-This is a pure online version so no installation needed on your laptop other than a browser. There might be issues to connect behind company firewalls though
+This is a pure online version so no installation needed on your laptop other than a browser. There might be issues to connect behind company firewalls though.
+
+Downsides:
+- your session will be closed after a period of inactivity of 15-60 minutes, e.g. when you loose your internet connection
+- your work in the Jupyter-Notebooks will be lost then.
 
 > <https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab)
 
@@ -50,14 +54,14 @@ python -m spacy download en_core_web_md
 
 Also you might want to download some bigger files:
 ```bash
-bash download_files.csv
+curl -LO https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip
+curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.2/okc_enriched_demo.pickle.tar.gz
+curl -LO https://github.com/d-one/NLPeasy-workshop/releases/download/v0.2/elastic-data.tar.gz
 ```
 This will download:
 - `profiles.csv.zip`: our data for today
-- `okc-files.pickle`: the solution that should come out of NLPeasy
-
-    (saving you a couple of hours of computation)
-- `elastic-data.zip`: t
+- `okc_enriched_demo.pickle.tar.gz`: the solution that should come out of NLPeasy (saving you a an hour of computation)
+- `elastic-data.tar.gz`: if elasticsearch is pointed to the `elastic-data/elastic-data` as it's `data` folder, then you can see immediatly the indexed data and generated dashboard.
 
 ### Start Jupyter Lab
 
@@ -65,4 +69,3 @@ Still in the activated virtual env `venv` you now can start jupyter lab
 ```bash
 jupyter lab
 ```
-and navigate to the `hands-on-1.ipynb` Notebook.
