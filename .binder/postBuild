@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-export ELK_VERSION=${ELK_VERSION:-7.7.1}
+export ELK_VERSION=${ELK_VERSION:-7.10.2}
 export SHARE_DIR=${SHARE_DIR:-~/opt}
 
 mkdir -p $SHARE_DIR
@@ -36,12 +36,14 @@ python -m spacy download en_core_web_sm
 python -m spacy download en_core_web_md
 python -m spacy download de_core_news_md
 
-pip install ./jupyter-server-proxy-1.5.1.tar.gz
+# pip install ./jupyter-server-proxy-1.5.1.tar.gz
 # pip install nlpeasy
-pip install git+https://github.com/d-one/nlpeasy
+pip install git+https://github.com/d-one/nlpeasy@binder
 
 if [ ! -r "profiles.csv.zip" ]; then
     curl -LO https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip
 fi
 
-jupyter labextension install -y --log-level=INFO --minimize=False @jupyterlab/server-proxy
+# let's try to get /lab as default path:
+echo "c.NotebookApp.default_url = '/lab'" >> .jupyter/jupyter_notebook_config.py
+echo "c.ServerApp.default_url = '/lab'" >> .jupyter/jupyter_server_config.py
