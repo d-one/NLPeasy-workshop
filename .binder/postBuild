@@ -38,7 +38,7 @@ python -m spacy download de_core_news_md
 
 # pip install ./jupyter-server-proxy-1.5.1.tar.gz
 # pip install nlpeasy
-pip install git+https://github.com/d-one/nlpeasy@binder
+pip install git+https://github.com/d-one/nlpeasy
 
 if [ ! -r "profiles.csv.zip" ]; then
     curl -LO https://github.com/rudeboybert/JSE_OkCupid/raw/master/profiles.csv.zip

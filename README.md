@@ -15,9 +15,17 @@ Downsides:
 - your session will be closed after a period of inactivity of 15-60 minutes, e.g. when you loose your internet connection
 - your work in the Jupyter-Notebooks will be lost then.
 
-> <https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master?urlpath=lab)
+> <https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/d-one/NLPeasy-workshop/master)
 
 However, there is only 1-2 GB of RAM available, which is tough for our example. Also if you loose your connection or close your laptop for 10 minutes your session is lost. *During the workshop we will provide you with bigger VMs in our cloud.*
+
+The same can also be done if you have docker installed (see instructions below) using:
+
+```bash
+JUPYTER_PORT=8888
+docker run --rm -itp $JUPYTER_PORT:$JUPYTER_PORT doneai/nlpeasy-workshop jupyter lab --ip=\* --port=$JUPYTER_PORT --NotebookApp.token='' --NotebookApp.password=''
+```
+And then going to <http://localhost:8888>.
 
 ## Own Laptop
 
